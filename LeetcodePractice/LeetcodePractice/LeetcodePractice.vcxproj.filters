@@ -30,6 +30,18 @@
     <ClCompile Include="mergeTwoArrays.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="zConvert.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="maxArea.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="intToRoman.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="inorderTraversal.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="addTwoNumbers.h">
@@ -42,6 +54,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="mergeTwoArrays.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="zConvert.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="maxArea.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="intToRoman.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="inorderTraversal.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

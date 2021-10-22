@@ -140,16 +140,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="addTwoNumbers.cpp" />
+    <ClCompile Include="inorderTraversal.cpp" />
+    <ClCompile Include="intToRoman.cpp" />
     <ClCompile Include="lengthOfLongestSubString.cpp" />
     <ClCompile Include="longestPalindrome.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="maxArea.cpp" />
     <ClCompile Include="mergeTwoArrays.cpp" />
+    <ClCompile Include="zConvert.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="addTwoNumbers.h" />
+    <ClInclude Include="inorderTraversal.h" />
+    <ClInclude Include="intToRoman.h" />
     <ClInclude Include="lengthOfLongestSubString.h" />
     <ClInclude Include="longestPalindrome.h" />
+    <ClInclude Include="maxArea.h" />
     <ClInclude Include="mergeTwoArrays.h" />
+    <ClInclude Include="zConvert.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

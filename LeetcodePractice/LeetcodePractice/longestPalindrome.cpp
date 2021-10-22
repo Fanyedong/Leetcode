@@ -1,58 +1,58 @@
-#include "longestPalindrome.h"
+ï»¿#include "longestPalindrome.h"
 
 string longestPalindrome::solutionDP(string s)
 {
-	/*×´Ì¬×ªÒÆ·½³Ì£º
+	/*çŠ¶æ€è½¬ç§»æ–¹ç¨‹ï¼š
 		P(i, j) = P(i + 1, j - 1) ^ (Si == Sj)
-	¶¯Ì¬¹æ»®µÄ±ß½çÌõ¼ş£º
+	åŠ¨æ€è§„åˆ’çš„è¾¹ç•Œæ¡ä»¶ï¼š
 		P(i, i) = true
-		P(i, i + 1) = (S_i == S_{ i + 1 }) */
+		P(i, i + 1) = (Si == Si+1) */
 
 	int n = s.size();
-	if (n < 2) //¿ÕºÍÒ»¸ö×Ö·ûµÄ×Ö·û´®
+	if (n < 2) //ç©ºå’Œä¸€ä¸ªå­—ç¬¦çš„å­—ç¬¦ä¸²
 	{
 		return s;
 	}
 
 	int maxLen = 1;
 	int begin = 0;
-	vector<vector<int>> dp(n, vector<int>(n));//¹¹½¨¶şÎ¬Êı×é
+	vector<vector<int>> dp(n, vector<int>(n));//æ„å»ºäºŒç»´æ•°ç»„
 
-	// ³£¼û¶¨Òå·½·¨£º
-	// (1) vector<int> a(5); //¶¨ÒåÁË5¸öÕûĞÍÔªËØµÄÏòÁ¿£¨<>ÖĞÎªÔªËØÀàĞÍÃû£¬Ëü¿ÉÒÔÊÇÈÎºÎºÏ·¨µÄÊı¾İÀàĞÍ£©£¬µ«Ã»ÓĞ¸ø³ö³õÖµ£¬ÆäÖµÊÇ²»È·¶¨µÄ¡£
-	//£¨2£©vector<int> a(5, 1); //¶¨ÒåÁË5¸öÕûĞÍÔªËØµÄÏòÁ¿,ÇÒ¸ø³öÃ¿¸öÔªËØµÄ³õÖµÎª1
-	//£¨3£©vector<int> a(b); //ÓÃbÏòÁ¿À´´´½¨aÏòÁ¿£¬ÕûÌå¸´ÖÆĞÔ¸³Öµ
-	//£¨4£©vector<int> a(b.begin(), b.begin + 3); //¶¨ÒåÁËaÖµÎªbÖĞµÚ0¸öµ½µÚ2¸ö£¨¹²3¸ö£©ÔªËØ
-	//£¨5£©int b[7] = { 1,2,3,4,5,9,8 };
+	// å¸¸è§å®šä¹‰æ–¹æ³•ï¼š
+	// (1) vector<int> a(5); //å®šä¹‰äº†5ä¸ªæ•´å‹å…ƒç´ çš„å‘é‡ï¼ˆ<>ä¸­ä¸ºå…ƒç´ ç±»å‹åï¼Œå®ƒå¯ä»¥æ˜¯ä»»ä½•åˆæ³•çš„æ•°æ®ç±»å‹ï¼‰ï¼Œä½†æ²¡æœ‰ç»™å‡ºåˆå€¼ï¼Œå…¶å€¼æ˜¯ä¸ç¡®å®šçš„ã€‚
+	//ï¼ˆ2ï¼‰vector<int> a(5, 1); //å®šä¹‰äº†5ä¸ªæ•´å‹å…ƒç´ çš„å‘é‡,ä¸”ç»™å‡ºæ¯ä¸ªå…ƒç´ çš„åˆå€¼ä¸º1
+	//ï¼ˆ3ï¼‰vector<int> a(b); //ç”¨bå‘é‡æ¥åˆ›å»ºaå‘é‡ï¼Œæ•´ä½“å¤åˆ¶æ€§èµ‹å€¼
+	//ï¼ˆ4ï¼‰vector<int> a(b.begin(), b.begin + 3); //å®šä¹‰äº†aå€¼ä¸ºbä¸­ç¬¬0ä¸ªåˆ°ç¬¬2ä¸ªï¼ˆå…±3ä¸ªï¼‰å…ƒç´ 
+	//ï¼ˆ5ï¼‰int b[7] = { 1,2,3,4,5,9,8 };
 
 	//vector< vector<int>> v(m, vector<int>(n)); 
-	//¶¨ÒåÁËÒ»¸övectorÈİÆ÷£¬ÔªËØÀàĞÍÎªvector<int>£¬³õÊ¼»¯Îª°üº¬m¸övector<int>¶ÔÏó£¬Ã¿¸ö¶ÔÏó¶¼ÊÇÒ»¸öĞÂ´´Á¢µÄvector<int>¶ÔÏóµÄ¿½±´£¬
-	//¶øÕâ¸öĞÂ´´Á¢µÄvector<int>¶ÔÏó±»³õÊ¼»¯Îª°üº¬n¸ö0¡£
+	//å®šä¹‰äº†ä¸€ä¸ªvectorå®¹å™¨ï¼Œå…ƒç´ ç±»å‹ä¸ºvector<int>ï¼Œåˆå§‹åŒ–ä¸ºåŒ…å«mä¸ªvector<int>å¯¹è±¡ï¼Œæ¯ä¸ªå¯¹è±¡éƒ½æ˜¯ä¸€ä¸ªæ–°åˆ›ç«‹çš„vector<int>å¯¹è±¡çš„æ‹·è´ï¼Œ
+	//è€Œè¿™ä¸ªæ–°åˆ›ç«‹çš„vector<int>å¯¹è±¡è¢«åˆå§‹åŒ–ä¸ºåŒ…å«nä¸ª0ã€‚
 
-	for (int i = 0; i < n; i++) //±ß½çÌõ¼ş1£¬³¤¶ÈÎª1µÄ×Ó´®¶¼ÊÇ»ØÎÄ´®
+	for (int i = 0; i < n; i++) //è¾¹ç•Œæ¡ä»¶1ï¼Œé•¿åº¦ä¸º1çš„å­ä¸²éƒ½æ˜¯å›æ–‡ä¸²
 	{
 		dp[i][i] = true;
 	}
 
-	for (int L = 2; L <= n; L++)//Ã¶¾Ù×Ó´®³¤¶È
+	for (int L = 2; L <= n; L++)//æšä¸¾å­ä¸²é•¿åº¦
 	{
-		for (int i = 0; i < n; i++)//Ã¶¾Ù×ó±ß½ç
+		for (int i = 0; i < n; i++)//æšä¸¾å·¦è¾¹ç•Œ
 		{
 			int j = L + i - 1; // j - i + 1 = L
 
-			if (j >= n)//½áÊøÌõ¼ş
+			if (j >= n)//ç»“æŸæ¡ä»¶
 			{
 				break;
 			}
 
-			if (s[i] != s[j])//×´Ì¬Ë¢ĞÂ·½³Ì
+			if (s[i] != s[j])//çŠ¶æ€åˆ·æ–°æ–¹ç¨‹
 				dp[i][j] = false;
 			else
 			{
 				if (j - i < 3)
-					dp[i][j] = true;//±ß½çÌõ¼ş2
+					dp[i][j] = true;//è¾¹ç•Œæ¡ä»¶2
 				else
-					dp[i][j] = dp[i + 1][j - 1];//×´Ì¬×ªÒÆ·½³Ì£¬ÏòÄÚÊÕËõ
+					dp[i][j] = dp[i + 1][j - 1];//çŠ¶æ€è½¬ç§»æ–¹ç¨‹ï¼Œå‘å†…æ”¶ç¼©
 			}
 
 			if (dp[i][j] && j - i + 1 > maxLen)
@@ -70,7 +70,8 @@ void longestPalindrome::verification()
 {
 	string s = "abdbaccc";
 	//cout << solutionDP(s);
-	cout << practiceDP(s);
+	//cout << practiceDP(s);
+	cout << solutionCenterExpand(s);
 }
 
 string longestPalindrome::practiceDP(string s)
@@ -123,4 +124,42 @@ string longestPalindrome::practiceDP(string s)
 		}
 	}
 	return s.substr(begin, maxLen);
+}
+
+string longestPalindrome::solutionCenterExpand(string s)
+{
+	 //â€‹è¾¹ç•Œæƒ…å†µå¯¹åº”çš„å­ä¸²å®é™…ä¸Šå°±æ˜¯æˆ‘ä»¬ã€Œæ‰©å±•ã€å‡ºçš„å›æ–‡ä¸²çš„å›æ–‡ä¸­å¿ƒã€‚
+	 //æ–¹æ³•äºŒçš„æœ¬è´¨å³ä¸ºï¼šæˆ‘ä»¬æšä¸¾æ‰€æœ‰çš„ã€Œå›æ–‡ä¸­å¿ƒã€å¹¶å°è¯•ã€Œæ‰©å±•ã€ï¼Œç›´åˆ°æ— æ³•æ‰©å±•ä¸ºæ­¢ï¼Œæ­¤æ—¶çš„å›æ–‡ä¸²é•¿åº¦å³ä¸ºæ­¤ã€Œå›æ–‡ä¸­å¿ƒã€ä¸‹çš„æœ€é•¿å›æ–‡ä¸²é•¿åº¦ã€‚
+	 //æˆ‘ä»¬å¯¹æ‰€æœ‰çš„é•¿åº¦æ±‚å‡ºæœ€å¤§å€¼ï¼Œå³å¯å¾—åˆ°æœ€ç»ˆçš„ç­”æ¡ˆã€‚
+	int start = 0;
+	int end = 0;
+	
+	for (int i = 0; i < s.size(); ++i)
+	{
+		pair<int,int> a = expandAroundCenter(s, i, i);
+		pair<int, int> b = expandAroundCenter(s, i, i + 1);
+
+		if (a.second - a.first > end - start)
+		{
+			start = a.first;
+			end = a.second;
+		}
+
+		if (b.second - b.first > end - start)
+		{
+			start = b.first;
+			end = b.second;
+		}
+	}
+	return s.substr(start, end - start + 1);
+}
+
+pair<int, int> longestPalindrome::expandAroundCenter(const string& s, int left, int right)
+{
+	while (left >= 0 && right < s.size() && s[left] == s[right])
+	{
+		--left;
+		++right;
+	}
+	return { left + 1, right - 1 };
 }

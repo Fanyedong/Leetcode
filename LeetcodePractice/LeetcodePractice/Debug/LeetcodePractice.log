@@ -1,8 +1,2 @@
-﻿  addTwoNumbers.cpp
-  lengthOfLongestSubString.cpp
-  longestPalindrome.cpp
-  main.cpp
-  mergeTwoArrays.cpp
-C:\Users\dongfan\Desktop\Leetcode\Leetcode\LeetcodePractice\LeetcodePractice\mergeTwoArrays.cpp(51,20): warning C4018: “<”: 有符号/无符号不匹配
-  正在生成代码...
-  LeetcodePractice.vcxproj -> C:\Users\dongfan\Desktop\Leetcode\Leetcode\LeetcodePractice\Debug\LeetcodePractice.exe
+﻿  inorderTraversal.cpp
+  LeetcodePractice.vcxproj -> C:\Users\dongfan\Desktop\LeetCodePractice\Leetcode\LeetcodePractice\Debug\LeetcodePractice.exe

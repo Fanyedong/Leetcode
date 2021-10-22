@@ -12,4 +12,9 @@ public:
 	void verification();
 
 	string practiceDP(string s);
+
+	string solutionCenterExpand(string s);
+
+	pair<int, int> expandAroundCenter(const string& s, int left, int right);
+
 };
