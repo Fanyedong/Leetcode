@@ -139,12 +139,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Automation.cpp" />
+    <ClCompile Include="myAtoi.cpp" />
     <ClCompile Include="convertToTitle.cpp" />
     <ClCompile Include="isPalindrome.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="titleToNumber.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Automation.h" />
+    <ClInclude Include="myAtoi.h" />
     <ClInclude Include="convertToTitle.h" />
     <ClInclude Include="isPalindrome.h" />
     <ClInclude Include="titleToNumber.h" />

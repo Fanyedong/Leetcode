@@ -27,6 +27,12 @@
     <ClCompile Include="convertToTitle.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="myAtoi.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Automation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="isPalindrome.h">
@@ -36,6 +42,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="convertToTitle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="myAtoi.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Automation.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

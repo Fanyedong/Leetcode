@@ -139,19 +139,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="findMedianSortedArrays.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="majorityElement.cpp" />
     <ClCompile Include="maxProfit.cpp" />
     <ClCompile Include="maxSubArray.cpp" />
     <ClCompile Include="singleNumber.cpp" />
+    <ClCompile Include="threeSum.cpp" />
     <ClCompile Include="twoSum.cpp" />
     <ClCompile Include="YangTriangle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="findMedianSortedArrays.h" />
     <ClInclude Include="majorityElement.h" />
     <ClInclude Include="maxProfit.h" />
     <ClInclude Include="maxSubArray.h" />
     <ClInclude Include="singleNumber.h" />
+    <ClInclude Include="threeSum.h" />
     <ClInclude Include="twoSum.h" />
     <ClInclude Include="YangTriangle.h" />
   </ItemGroup>

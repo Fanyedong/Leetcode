@@ -5,13 +5,14 @@
 #include "twoSum.h"
 #include "majorityElement.h"
 #include "maxSubArray.h"
-
+#include "findMedianSortedArrays.h"
+#include "threeSum.h"
 using namespace std;
 
 
 
 int main()
 {
-	maxSubArray tmp;
+	threeSum tmp;
 	tmp.verification();
 }
